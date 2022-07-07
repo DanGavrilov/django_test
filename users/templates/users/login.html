@@ -1,0 +1,13 @@
+{% extends 'users/layout.html' %}
+{% block title %}Авторизація{% endblock %}
+{% block content %}
+<img class="img" src="/static/users/img.png">
+<div class="login_form">
+<form method="post">
+    {{ form.username }} Введіть логін
+    {{ form.password }}Введіть пароль<br>
+    {% csrf_token %}
+    <input type="submit" value="Увійти">
+</form>
+</div>
+{% endblock %}

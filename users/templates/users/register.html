@@ -1,0 +1,12 @@
+{% extends 'users/layout.html' %}
+{% block title %}Реєстрація{% endblock %}
+{% block content %}
+<img class="img" src="/static/users/img.png">
+<div class="register_form">
+<form method="post">
+    {{ form }}
+    {% csrf_token %}
+    <input type="submit" value="Зареєструватись">
+</form>
+</div>
+{% endblock %}

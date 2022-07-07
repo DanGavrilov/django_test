@@ -1,0 +1,13 @@
+{% extends 'users/layout.html' %}
+{% block title %}Новий пост{% endblock %}
+{% block content %}
+<img class="img1" src="/static/users/img1.png">
+<div class="form">
+<form method="post">
+    {{ form.name }}
+    {{ form.text }}<br>
+    {% csrf_token %}
+    <input type="submit" value="Створити">
+</form>
+</div>
+{% endblock %}
