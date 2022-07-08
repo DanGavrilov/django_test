@@ -1,5 +1,10 @@
 {% extends 'users/layout.html' %}
 {% block title %}Моя сторінка{% endblock %}
 {% block content %}
+{% for el in posts %}
+{{ el.name }}<br>
+{{ el.text }}<br>
+{{ el.date }}<br>
+{% endfor %}
 
 {% endblock %}

@@ -4,8 +4,8 @@
 <img class="img1" src="/static/users/img1.png">
 <div class="form">
 <form method="post">
-    {{ form.name }}
     {{ form.text }}<br>
+    <input type="hidden" name="name" value="{{ request.user }}">
     {% csrf_token %}
     <input type="submit" value="Створити">
 </form>

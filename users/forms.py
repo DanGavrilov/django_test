@@ -1,7 +1,7 @@
 
 
 from .models import Post
-from django.forms import ModelForm, TextInput, Textarea
+from django.forms import ModelForm, TextInput, Textarea, HiddenInput
 
 
 class UserForm(ModelForm):
@@ -9,7 +9,7 @@ class UserForm(ModelForm):
         model = Post
         fields = ['name','text']
         widgets = {
-            'name': TextInput(attrs={
+            'name': HiddenInput(attrs={
                 "placeholder":"Назва"
             }),
             'text': Textarea(attrs={

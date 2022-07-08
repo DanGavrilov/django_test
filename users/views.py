@@ -23,8 +23,8 @@ def register(request):
             return redirect('login')
 
     data = {
-        'form':form,
-        'buttons':buttons
+        'form': form,
+        'buttons': buttons
     }
     return render(request, 'users/register.html', data)
 
@@ -56,15 +56,12 @@ def create_post(request):
     buttons = [Button('Головна сторінка', 'main'), Button('Про нас', 'about'), Button('Вийти', 'logout')]
     form = UserForm
     form.name = request.user
-
     if request.method == 'POST':
-        print(request.user)
         form = UserForm(request.POST)
-        form.name = request.user
-        form.save(commit=False)
         if form.is_valid():
             form.save()
             return redirect('profile')
+
     data = {
         'form': form,
         'buttons': buttons
@@ -74,9 +71,12 @@ def create_post(request):
 
 @login_required
 def profile(request):
-    buttons = [Button('Головна сторінка', 'main'), Button('Про нас', 'about'), Button('Створити пост', 'create_post'), Button('Вийти', 'logout')]
+    posts = Post.objects.all().filter(name=request.user).order_by('-date')
+    buttons = [Button('Головна сторінка', 'main'), Button('Про нас', 'about'), Button('Створити пост', 'create_post'),
+               Button('Вийти', 'logout')]
     data = {
-        'buttons':buttons
+        'buttons': buttons,
+        'posts': posts
     }
     return render(request, 'users/profile.html', data)
 
