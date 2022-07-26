@@ -1,7 +1,5 @@
-
-
-from .models import Post
-from django.forms import ModelForm, TextInput, Textarea, HiddenInput
+from .models import Post, Information
+from django.forms import ModelForm, TextInput, Textarea, HiddenInput, CharField
 
 
 class UserForm(ModelForm):
@@ -17,3 +15,19 @@ class UserForm(ModelForm):
             }),
 
         }
+
+
+class InformationForm(ModelForm):
+    class Meta:
+        model = Information
+        fields = ['user','phone']
+        widgets = {
+            'user': HiddenInput(attrs={
+                'placeholder': 'user'
+            }),
+            'phone': TextInput(attrs={
+                'placeholder': 'Номер телефону'
+            }),
+        }
+
+

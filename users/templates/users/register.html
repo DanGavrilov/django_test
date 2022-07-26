@@ -5,6 +5,8 @@
 <div class="register_form">
 <form method="post">
     {{ form }}
+    {{ in_form.phone }}
+    <input type="hidden" name="name" value="{{ user }}">
     {% csrf_token %}
     <input type="submit" value="Зареєструватись">
 </form>
